@@ -1,0 +1,93 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 40em;
+    justify-content: center;
+    align-items: center;
+}
+
+.cuboid {
+    --width: 50vmin;
+    --height: 50vmin;
+    --depth: 50vmin;
+    height: var(--height);
+    width: var(--width);
+    position: relative;
+    animation: rot 10s infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes rot {
+    0% {
+        transform: rotateX(-10deg) rotateY(0deg);
+    }
+    25% {
+        transform: rotateX(-10deg) rotateY(90deg);
+    }
+    50% {
+        transform: rotateX(-10deg) rotateY(-180deg);
+    }
+    75% {
+        transform: rotateX(-10deg) rotateY(270deg);
+    }
+    100% {
+        transform: rotateX(-10deg) rotateY(-360deg);
+    }
+}
+
+.cuboid__side {
+    border: 1px solid hsla(0, 0%, 10%, 0.514);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(210, 80%, 20%, 0.6);
+}
+
+.cuboid__side:nth-of-type(1),
+.cuboid__side:nth-of-type(2) {
+    --coefficient: -0.5;
+    height: var(--height);
+    width: var(--width);
+    transform: translate3d(0, 0, calc(var(--depth) * var(--coefficient)));
+}
+
+.cuboid__side:nth-of-type(2) {
+    --coefficient: 0.5;
+}
+
+.cuboid__side:nth-of-type(3),
+.cuboid__side:nth-of-type(4) {
+    --rotation: 90deg;
+    height: var(--height);
+    width: var(--depth);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotateY(var(--rotation)) translate3d(0, 0, calc(var(--width) * -0.5));
+}
+
+.cuboid__side:nth-of-type(4) {
+    --rotation: -90deg;
+}
+
+.cuboid__side:nth-of-type(1) img,
+.cuboid__side:nth-of-type(3) img,
+.cuboid__side:nth-of-type(4) img {
+    transform: scaleX(-1);
+}
+
+.cuboid__side:nth-of-type(5),
+.cuboid__side:nth-of-type(6) {
+    --rotation: 90deg;
+    height: var(--depth);
+    width: var(--width);
+    background-color: hsl(210, 80%, 20%, 0.3);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotateX(var(--rotation)) translate3d(0, 0, calc(var(--height) * -0.5));
+}
+
+.cuboid__side:nth-of-type(6) {
+    --rotation: -90deg;
+}

@@ -1,0 +1,1 @@
+AlgoExpert is a paid platform where software engineers can practice technical interview questions. The team picked 150+ common data structures, algorithms, and problem-solving questions that span 15 categories and 4 difficulty levels
